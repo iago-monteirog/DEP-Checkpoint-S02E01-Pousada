@@ -5,7 +5,7 @@ import classNames from "classnames";
 export default function Navbar() {
   const [active, setActive] = useState(false);
 
-  function toggleMenu() {console.log('aaa');
+  function toggleMenu() {
     active ? setActive(false) : setActive(true);
   }
 
@@ -13,9 +13,11 @@ export default function Navbar() {
     <nav className="Navbar">
       <div className="container">
         <div className="Navbar__inside">
-          <div className="Navbar__logo">LOGO</div>
+          <div className="Navbar__logo">
+            <h1>Logo</h1>
+          </div>
           <div onClick={toggleMenu} className="Navbar__hamburguer-menu">
-            <Menu />
+            <Menu color="#eff4f9" />
           </div>
           <div
             className={classNames("MenuLinks", {

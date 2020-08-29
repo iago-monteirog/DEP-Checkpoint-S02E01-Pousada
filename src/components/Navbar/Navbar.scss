@@ -8,10 +8,28 @@
     padding: 8px 0;
     position: relative;
 
+    @include for-desktop-up {
+      padding: 21px 0;
+    }
+
     .Navbar__logo {
+      h1 {
+        color: #eff4f9;
+        font-weight: bold;
+
+        @include for-desktop-up {
+          font-size: 48px;
+          line-height: 56px;
+        }
+      }
     }
-    .Navbar__hamburguer-menu {
+
+    @include for-desktop-up {
+      .Navbar__hamburguer-menu {
+        display: none;
+      }
     }
+
     .MenuLinks {
       position: absolute;
       top: 100%;
@@ -23,23 +41,52 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.5s;
-
-      &.active {
-        max-height: 1000px;
-      }
+      pointer-events: none;
 
       * {
         pointer-events: none;
       }
 
+      &.active {
+        max-height: 1000px;
+
+        * {
+          pointer-events: all;
+        }
+      }
+
+      @include for-desktop-up {
+        position: static;
+        max-height: initial;
+        width: auto;
+        overflow: visible;
+        pointer-events: all;
+        top: 0;
+
+        * {
+          pointer-events: all;
+        }
+      }
+
       .MenuLinks__container {
+        @include for-desktop-up {
+          display: flex;
+          font-weight: bold;
+          font-size: 20.35px;
+          line-height: 28px;
+        }
+
         .MenuLinks__link {
           padding: $nudge-2;
           text-align: right;
 
           a {
-            color: $dark;
+            color: #eff4f9;
             text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
       }
