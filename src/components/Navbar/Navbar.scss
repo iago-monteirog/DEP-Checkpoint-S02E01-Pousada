@@ -1,0 +1,48 @@
+.Navbar {
+  background: $orange;
+
+  .Navbar__inside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    position: relative;
+
+    .Navbar__logo {
+    }
+    .Navbar__hamburguer-menu {
+    }
+    .MenuLinks {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      left: -$nudge-2;
+      background: $orange;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s;
+
+      &.active {
+        max-height: 1000px;
+      }
+
+      * {
+        pointer-events: none;
+      }
+
+      .MenuLinks__container {
+        .MenuLinks__link {
+          padding: $nudge-2;
+          text-align: right;
+
+          a {
+            color: $dark;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
