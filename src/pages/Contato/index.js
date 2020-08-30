@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Section from "../../components/Section";
 import Input from "../../components/Form/Input";
 import TextArea from "../../components/Form/TextArea";
 import Button from "../../components/Button";
+import api from '../../services/api'
 
 export default function Contato() {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  const [feedback, setFeedback] = useState('');
+
+  function sendContato(e) {
+    e.preventDefault();
+    if(!nome || !email || !mensagem) {
+      return setFeedback("Campos precisam estar preenchidos")
+    }
+    api.post('/feedback', {
+      nome,
+      email,
+      mensagem
+    }).then(resp => setFeedback(resp.data))
+    .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+
+  }, [feedback])
+
   return (
     <Section title="Contato">
       <div className="Contato">
@@ -14,24 +38,31 @@ export default function Contato() {
               label="Nome"
               placeholder="Carlos Android"
               feedback="Insira seu nome"
+              onChange={e => setNome(e.target.value)}
+              value={nome}
             />
             <Input
               label="E-mail"
               placeholder="carlos@android.com"
               feedback="Insira seu email"
+              onChange={e => setEmail(e.target.value)}
+              value={email}
             />
             <TextArea
               label="Mensagem"
               placeholder="Nota 10 na nac pra vcs"
               feedback="Não quer dizer nada?"
+              onChange={e => setMensagem(e.target.value)}
+              value={mensagem}
             />
             <Button
               text="Enviar mensagem"
               theme="orange"
-              onClick={() => {
-                console.log("clicked");
+              onClick={e => {
+                sendContato(e);
               }}
             />
+            <p className="Feedback">{feedback}</p>
           </form>
           <div className="Contato__map">
             <p>Endereço</p>
