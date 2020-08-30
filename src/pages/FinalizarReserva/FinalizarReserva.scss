@@ -1,0 +1,24 @@
+.FinalizarReserva {
+  @include for-desktop-up {
+    margin-bottom: $nudge-10;
+  }
+
+  .FinalizarReserva__inside {
+    max-width: 700px;
+    margin: 0 auto;
+
+    form {
+      .FinalizarReserva__valor {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: $nudge-4;
+        color: #445566;
+
+        @include for-desktop-up {
+          font-size: 36px;
+          line-height: 49px;
+        }
+      }
+    }
+  }
+}

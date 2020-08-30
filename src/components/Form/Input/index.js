@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 const Input = ({
   onChange,
@@ -10,7 +11,7 @@ const Input = ({
   value,
 }) => {
   return (
-    <div className={`Input`}>
+    <div className={classNames("Input", { ["Input--error"]: feedback })}>
       <label htmlFor={name}>{label}</label>
       <input
         name={name}

@@ -6,16 +6,6 @@
   width: 100%;
   position: relative;
 
-  &--error {
-    input {
-      border-color: $orange;
-    }
-
-    p {
-      color: $orange;
-    }
-  }
-
   label {
     width: 100%;
     display: block;
@@ -48,5 +38,15 @@
   p {
     font-size: 16px;
     text-align: left;
+  }
+
+  &--error {
+    input {
+      border-color: $orange;
+    }
+
+    p {
+      color: $orange;
+    }
   }
 }
