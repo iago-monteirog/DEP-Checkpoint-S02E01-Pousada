@@ -30,7 +30,11 @@ export default function Quarto(props) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal((utils.daysInterval(checkinDate, checkoutDate) + 1) * unitCost);
+    try {
+      setTotal((utils.daysInterval(checkinDate, checkoutDate) + 1) * unitCost);
+    } catch (err) {
+      setTotal(0);
+    }
   }, [checkinDate, checkoutDate]);
 
   function onCheckinChange(event) {
@@ -112,7 +116,7 @@ export default function Quarto(props) {
       `/reserva/${checkinDate.replace(/\//g, "-")}/${checkoutDate.replace(
         /\//g,
         "-"
-      )}`
+      )}/${tipo}`
     );
   }
 
