@@ -1,5 +1,5 @@
 import React from "react";
-import SuiteImg from "../../assets/img/Suite.png";
+import VipImg from "../../assets/img/Suite.png";
 import ApartamentoImg from "../../assets/img/Apartamento.png";
 import Button from "../../components/Button";
 import ImageBox from "../../components/ImageBox";
@@ -13,7 +13,7 @@ export default function Quartos() {
           <div className="Quartos__columns">
             <div className="Quarto__column">
               <div className="Quarto__column-head">
-                <ImageBox img={SuiteImg} name="Suite" />
+                <ImageBox img={VipImg} name="Vip" linkTo="/quartos/vip" />
               </div>
               <div className="Quarto__column-body">
                 <article className="Content">
@@ -33,7 +33,11 @@ export default function Quartos() {
             </div>
             <div className="Quarto__column">
               <div className="Quarto__column-head">
-                <ImageBox img={ApartamentoImg} name="Apartamento" />
+                <ImageBox
+                  img={ApartamentoImg}
+                  name="Apartamento"
+                  linkTo="/quartos/apartamento"
+                />
               </div>
               <div className="Quarto__column-body">
                 <article className="Content">
