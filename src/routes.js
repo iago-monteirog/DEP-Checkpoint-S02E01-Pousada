@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import FinalizarReserva from "./pages/FinalizarReserva";
 import ReservaFinalizada from "./pages/ReservaFinalizada";
 import ReservasFeitas from "./pages/ReservasFeitas";
+import Contato from "./pages/Contato";
 
 export default function Routes() {
   return (
@@ -20,6 +21,7 @@ export default function Routes() {
           <Route path="/quarto/:tipo" exact component={Quarto} />
           <Route path="/reserva" exact component={FinalizarReserva} />
           <Route path="/admin/reservas" exact component={ReservasFeitas} />
+          <Route path="/contato" exact component={Contato} />
           <Route
             path="/reserva-finalizada"
             exact

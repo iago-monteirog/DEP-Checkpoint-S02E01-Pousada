@@ -1,0 +1,30 @@
+.Contato {
+  .Contato__columns {
+    @include for-desktop-up {
+      display: flex;
+      justify-content: space-between;
+
+      .Contato__map,
+      form {
+        width: 47%;
+      }
+    }
+
+    form {
+      margin-bottom: $nudge-7;
+    }
+    .Contato__map {
+      p {
+        margin-bottom: $nudge-2;
+      }
+      iframe {
+        width: 100%;
+        height: 261px;
+
+        @include for-desktop-up {
+          height: 461px;
+        }
+      }
+    }
+  }
+}
