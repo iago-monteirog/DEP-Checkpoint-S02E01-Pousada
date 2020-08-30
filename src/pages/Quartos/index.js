@@ -3,13 +3,13 @@ import SuiteImg from "../../assets/img/Suite.png";
 import ApartamentoImg from "../../assets/img/Apartamento.png";
 import Button from "../../components/Button";
 import ImageBox from "../../components/ImageBox";
+import Section from "../../components/Section";
 
 export default function Quartos() {
   return (
-    <div className="Quartos">
-      <div className="container">
+    <Section title="Quartos">
+      <div className="Quartos">
         <div className="Quartos__inside">
-          <h1>Quartos</h1>
           <div className="Quartos__columns">
             <div className="Quarto__column">
               <div className="Quarto__column-head">
@@ -54,6 +54,6 @@ export default function Quartos() {
           </div>
         </div>
       </div>
-    </div>
+    </Section>
   );
 }

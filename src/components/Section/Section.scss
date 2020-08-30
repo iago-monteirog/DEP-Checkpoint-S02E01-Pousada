@@ -1,0 +1,23 @@
+.Section {
+  padding: $nudge-3 0;
+
+  @include for-desktop-up {
+    padding: $nudge-10 0;
+  }
+
+  .Section__inside {
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: #000000;
+      font-size: 24px;
+      margin-bottom: $nudge-3;
+
+      @include for-desktop-up {
+        font-size: 64px;
+        line-height: 87px;
+        margin-bottom: $nudge-10;
+      }
+    }
+  }
+}
