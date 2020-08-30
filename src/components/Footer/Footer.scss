@@ -1,0 +1,22 @@
+.Footer {
+  background: $orange;
+  padding: $nudge-2 0;
+
+  .Footer__inside {
+    article {
+      text-align: center;
+      font-style: normal;
+      font-weight: normal;
+      color: #ffffff;
+
+      @include for-desktop-up {
+        font-size: 36px;
+        line-height: 49px;
+      }
+
+      p {
+        color: $white;
+      }
+    }
+  }
+}
