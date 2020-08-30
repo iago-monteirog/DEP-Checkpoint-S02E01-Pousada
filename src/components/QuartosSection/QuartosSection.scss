@@ -13,7 +13,7 @@
       margin-bottom: $nudge-3;
 
       @include for-desktop-up {
-          margin-bottom: $nudge-7;
+        margin-bottom: $nudge-7;
       }
     }
   }
@@ -26,12 +26,16 @@
 
     .QuartosSection__box {
       background: #ffffff;
-      box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.25);
       border-radius: $nudge;
       margin: 0 auto;
       margin-bottom: $nudge-3;
       max-width: 600px;
+      transition: box-shadow 0.5s;
+      border: .5px solid  rgba(0, 0, 0, 0.10);
 
+      &:hover {
+        box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.25);
+      }
       img {
       }
 
