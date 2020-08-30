@@ -20,7 +20,7 @@ export default function Routes() {
           <Route path="/quartos" exact component={Quartos} />
           <Route path="/quartos/:tipo" exact component={Quarto} />
           <Route path="/quartos/:tipo/:checkout/:checkin" exact component={Quarto} />
-          <Route path="/reserva" exact component={FinalizarReserva} />
+          <Route path="/reserva/:checkin/:checkout" exact component={FinalizarReserva} />
           <Route path="/admin/reservas" exact component={ReservasFeitas} />
           <Route path="/contato" exact component={Contato} />
           <Route

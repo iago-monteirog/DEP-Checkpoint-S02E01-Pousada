@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Section from "../../components/Section";
 import VipImg from "../../assets/img/Suite2.png";
-import QuartoImg from "../../assets/img/Quarto2.png";
 import ApartamentoImg from "../../assets/img/Apartamento.png";
-import BoxReserva from "../../components/BoxReserva";
 import Input from "../../components/Form/Input";
 import Button from "../../components/Button";
 import Box from "../../components/Box";
+import utils from "../../utils";
+import { useHistory } from "react-router-dom";
 
 export default function Quarto(props) {
   const {
@@ -14,48 +14,146 @@ export default function Quarto(props) {
       params: { tipo, checkout, checkin },
     },
   } = props;
-  const checkinDate = checkin && checkin.replace(/-/g, "/");
-  const checkoutDate = checkout && checkout.replace(/-/g, "/");
+  const history = useHistory();
+
   const isApartamento = tipo.toLowerCase() === "apartamento";
+  const unitCost = isApartamento ? 100 : 200;
+
+  const [checkinDate, setCheckin] = useState(
+    checkin && checkin.replace(/-/g, "/")
+  );
+  const [checkoutDate, setCheckout] = useState(
+    checkout && checkout.replace(/-/g, "/")
+  );
+  const [checkinFeedback, setCheckinFeedback] = useState("");
+  const [checkoutFeedback, setCheckoutFeedback] = useState("");
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal((utils.daysInterval(checkinDate, checkoutDate) + 1) * unitCost);
+  }, [checkinDate, checkoutDate]);
+
+  function onCheckinChange(event) {
+    let value = event.target.value;
+
+    setCheckin(value);
+
+    if (!value) {
+      setCheckinFeedback("Informe uma data");
+      return;
+    } else {
+      setCheckinFeedback("");
+    }
+
+    if (!utils.dateIsValid(value)) {
+      setCheckinFeedback("Data inválida");
+      return;
+    }
+
+    if (utils.dateIsBeforeToday(value)) {
+      setCheckinFeedback("Data não pode serantes de hoje");
+    }
+  }
+
+  function onCheckoutChange(event) {
+    let value = event.target.value;
+
+    setCheckout(value);
+    if (!value) {
+      setCheckoutFeedback("Informe uma data");
+      return;
+    } else {
+      setCheckoutFeedback("");
+    }
+
+    if (!utils.dateIsValid(value)) {
+      setCheckoutFeedback("Data inválida");
+      return;
+    }
+
+    if (utils.dateIsBeforeToday(value)) {
+      setCheckoutFeedback("Data não pode serantes de hoje");
+      return;
+    }
+
+    if (utils.daysAfterNow(value, 2)) {
+      setCheckoutFeedback("Data deve ser posterior a dois dias da data atual.");
+      return;
+    }
+  }
+
+  function onButtonClick() {
+    if (!checkinDate) {
+      setCheckinFeedback("Informe uma data");
+      return;
+    }
+
+    if (!checkoutDate) {
+      setCheckoutFeedback("Informe uma data");
+      return;
+    }
+
+    if (!utils.dateIsValid(checkinDate)) {
+      setCheckinFeedback("Data inválida");
+      return;
+    }
+
+    if (!utils.dateIsValid(checkoutDate)) {
+      setCheckoutFeedback("Data inválida");
+      return;
+    }
+
+    if (utils.intervalIsInvalid(checkoutDate, checkinDate)) {
+      alert("Intervalo de datas invalido");
+      return;
+    }
+
+    history.push(
+      `/reserva/${checkinDate.replace(/\//g, "-")}/${checkoutDate.replace(
+        /\//g,
+        "-"
+      )}`
+    );
+  }
 
   return (
     <Section title={isApartamento ? "Apartamento" : "Vip"}>
       <div className="Quarto">
         <div className="Quarto__head">
           <div className="Quarto__image">
-            {isApartamento ? <img src={VipImg} /> : <img src={QuartoImg} />}
+            {isApartamento ? (
+              <img src={VipImg} />
+            ) : (
+              <img src={ApartamentoImg} />
+            )}
           </div>
           <div className="Quarto__reserva">
             <Box>
               <h3>Reserva</h3>
               <Input
                 name="checkin"
-                onChange={() => {
-                  console.log("changed");
-                }}
+                onChange={onCheckinChange}
                 label="Check-in"
                 placeholder="Digite uma data"
-                feedback=""
+                feedback={checkinFeedback}
                 value={checkinDate}
               />
               <Input
                 name="checkout"
-                onChange={() => {
-                  console.log("changed");
-                }}
+                onChange={onCheckoutChange}
                 label="Check-out"
                 placeholder="Digite uma data"
                 value={checkoutDate}
+                feedback={checkoutFeedback}
               />
               <Input
                 name="checkout"
-                onChange={() => {
-                  console.log("changed");
-                }}
                 label="Total"
+                value={utils.formatMoney(total, 2, ",", ".", "R$")}
+                disabled
                 placeholder="R$"
               />
-              <Button text="Reservar" theme="orange" />
+              <Button onClick={onButtonClick} text="Reservar" theme="orange" />
             </Box>
           </div>
         </div>
