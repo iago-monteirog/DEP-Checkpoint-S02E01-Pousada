@@ -22,15 +22,29 @@ const utils = {
       .add(1, "days")
       .isBefore(moment());
   },
-  daysInterval(checkoutDate) {
+  daysIntervalFromGivenDate(checkoutDate) {
     checkoutDate = utils.splitDateStr(checkoutDate);
 
     return moment(
       `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
     ).diff(moment(), "days");
   },
-  daysAfterNow(checkoutDate,days) {
-    return utils.daysInterval(checkoutDate) < days;
+  daysInterval(checkinDate, checkoutDate) {
+    checkoutDate = utils.splitDateStr(checkoutDate);
+    checkinDate = utils.splitDateStr(checkinDate);
+
+    return moment(
+      `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
+    ).diff(
+      moment(`${checkinDate.month}/${checkinDate.day}/${checkinDate.year}`),
+      "days"
+    );
+  },
+  intervalIsInvalid(checkinDate, checkoutDate) {
+    return utils.daysInterval(checkoutDate, checkinDate) < 0;
+  },
+  daysAfterNow(checkoutDate, days) {
+    return utils.daysIntervalFromGivenDate(checkoutDate) < days;
   },
 };
 

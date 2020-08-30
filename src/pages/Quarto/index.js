@@ -11,10 +11,11 @@ import Box from "../../components/Box";
 export default function Quarto(props) {
   const {
     match: {
-      params: { tipo },
+      params: { tipo, checkout, checkin },
     },
   } = props;
-
+  const checkinDate = checkin && checkin.replace(/-/g, "/");
+  const checkoutDate = checkout && checkout.replace(/-/g, "/");
   const isApartamento = tipo.toLowerCase() === "apartamento";
 
   return (
@@ -35,14 +36,16 @@ export default function Quarto(props) {
                 label="Check-in"
                 placeholder="Digite uma data"
                 feedback=""
+                value={checkinDate}
               />
               <Input
                 name="checkout"
                 onChange={() => {
                   console.log("changed");
                 }}
-                label="Check-in"
+                label="Check-out"
                 placeholder="Digite uma data"
+                value={checkoutDate}
               />
               <Input
                 name="checkout"

@@ -3,6 +3,7 @@ import Input from "../Form/Input";
 import Select from "../Form/Select";
 import Button from "../Button";
 import utils from "../../utils";
+import { useHistory } from "react-router-dom";
 
 export default function BoxReserva() {
   const [tipo, setTipo] = useState("Vip");
@@ -10,6 +11,7 @@ export default function BoxReserva() {
   const [checkinFeedback, setCheckinFeedback] = useState("");
   const [checkout, setCheckout] = useState("");
   const [checkoutFeedback, setCheckoutFeedback] = useState("");
+  const history = useHistory();
 
   function onTipoChange(event) {
     setTipo(event.target.value);
@@ -55,10 +57,12 @@ export default function BoxReserva() {
 
     if (utils.dateIsBeforeToday(value)) {
       setCheckoutFeedback("Data não pode serantes de hoje");
+      return;
     }
 
     if (utils.daysAfterNow(value, 2)) {
       setCheckoutFeedback("Data deve ser posterior a dois dias da data atual.");
+      return;
     }
   }
 
@@ -82,6 +86,18 @@ export default function BoxReserva() {
       setCheckoutFeedback("Data inválida");
       return;
     }
+
+    if (utils.intervalIsInvalid(checkout, checkin)) {
+      alert("Intervalo de datas invalido");
+      return;
+    }
+
+    history.push(
+      `/quartos/${tipo.toLowerCase()}/${checkout.replace(
+        /\//g,
+        "-"
+      )}/${checkin.replace(/\//g, "-")}`
+    );
   }
 
   return (
