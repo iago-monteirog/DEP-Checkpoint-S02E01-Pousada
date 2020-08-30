@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Menu } from "react-feather";
 import classNames from "classnames";
+import { Link,NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [active, setActive] = useState(false);
 
   function toggleMenu() {
@@ -14,7 +15,9 @@ export default function Navbar() {
       <div className="container">
         <div className="Navbar__inside">
           <div className="Navbar__logo">
-            <h1>Logo</h1>
+            <Link to="/">
+              <h1>Logo</h1>
+            </Link>
           </div>
           <div onClick={toggleMenu} className="Navbar__hamburguer-menu">
             <Menu color="#eff4f9" />
@@ -26,16 +29,22 @@ export default function Navbar() {
           >
             <div className="MenuLinks__container">
               <div className="MenuLinks__link">
-                <a href="#">Pagina inicial</a>
+                <NavLink activeClassName="active" exact to="/">
+                  Pagina inicial
+                </NavLink>
               </div>
               <div className="MenuLinks__link">
-                <a href="#">Sobre</a>
+                <a href="/#sobre">Sobre</a>
               </div>
               <div className="MenuLinks__link">
-                <a href="#">Quartos</a>
+                <NavLink activeClassName="active" exact to="/quartos">
+                  Quartos
+                </NavLink>
               </div>
               <div className="MenuLinks__link">
-                <a href="#">Contato</a>
+                <NavLink activeClassName="active" exact to="/contato">
+                  Contato
+                </NavLink>
               </div>
             </div>
           </div>
