@@ -2,6 +2,7 @@ import React from "react";
 import SuiteImg from "../../assets/img/Suite.png";
 import ApartamentoImg from "../../assets/img/Apartamento.png";
 import Button from "../Button";
+import ImageBox from "../ImageBox";
 
 export default function QuartosSection() {
   return (
@@ -10,18 +11,8 @@ export default function QuartosSection() {
         <div className="QuartosSection__inside">
           <h2>Quartos</h2>
           <div className="QuartosSection__boxes">
-            <div className="QuartosSection__box">
-              <img src={SuiteImg} alt="suite" />
-              <article>
-                <p>Suite</p>
-              </article>
-            </div>
-            <div className="QuartosSection__box">
-              <img src={ApartamentoImg} alt="apartamento" />
-              <article>
-                <p>Apartamento</p>
-              </article>
-            </div>
+            <ImageBox img={SuiteImg} name="Suite" />
+            <ImageBox img={ApartamentoImg} name="Apartamento" />
           </div>
           <div className="QuartoSection__bottom">
             <Button

@@ -1,0 +1,48 @@
+.Quartos {
+  padding: $nudge-3 0;
+
+  @include for-desktop-up {
+    padding: $nudge-10 0;
+  }
+
+  .Quartos__inside {
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      color: #000000;
+      font-size: 24px;
+      margin-bottom: $nudge-3;
+
+      @include for-desktop-up {
+        font-size: 64px;
+        line-height: 87px;
+        margin-bottom: $nudge-10;
+      }
+    }
+    .Quartos__columns {
+      @include for-desktop-up {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .Quarto__column {
+        margin-bottom: $nudge-10;
+
+        @include for-desktop-up {
+          width: 47%;
+        }
+
+        .Quarto__column-head {
+          margin-bottom: $nudge-4;
+        }
+        .Quarto__column-body {
+          margin-bottom: $nudge-5;
+        }
+        .QuartoColumn__bottom {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
