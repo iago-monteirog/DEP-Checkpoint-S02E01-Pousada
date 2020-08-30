@@ -1,0 +1,50 @@
+.Select:not(:last-child) {
+  margin-bottom: $nudge-2;
+}
+
+.Select {
+  width: 100%;
+  position: relative;
+
+  &--error {
+    select {
+      border-color: $orange;
+    }
+
+    p {
+      color: $orange;
+    }
+  }
+
+  label {
+    width: 100%;
+    display: block;
+    color: $dark;
+    text-align: left;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  select {
+    outline: none;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    padding: $nudge;
+    border: 3px solid #eff4f9;
+    box-sizing: border-box;
+    border-radius: $nudge;
+    height: 60px;
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: left;
+  }
+}

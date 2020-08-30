@@ -1,0 +1,34 @@
+.BoxReserva {
+  padding-top: $nudge-2;
+  position: relative;
+
+  @include for-desktop-up {
+    margin-top: -80px;
+    padding-top: 0;
+
+    select,
+    input,
+    .Input,
+    .Select,
+    button {
+      width: 254px;
+    }
+  }
+
+  .BoxReserva__inside {
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: $nudge;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $nudge-2;
+
+    @include for-desktop-up {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: $nudge-4;
+    }
+  }
+}

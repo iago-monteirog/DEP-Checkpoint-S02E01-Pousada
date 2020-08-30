@@ -1,0 +1,37 @@
+.Button {
+  width: 254px;
+  height: 60px;
+  border: 3px solid;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: $nudge;
+  font-weight: bold;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 33px;
+
+  &--fullwidth {
+    width: 100%;
+  }
+
+  &--orange-outlined {
+    border-color: #ff8a01;
+    color: #ff8a01;
+    background: transparent;
+  }
+
+  &--orange {
+    background-color: #ff8a01;
+  }
+
+  &--blue {
+    background: #269bff;
+  }
+
+  &--green {
+    background: #01ff0b;
+  }
+}
