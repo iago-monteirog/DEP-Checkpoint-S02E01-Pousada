@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "../../components/Section";
-import SuiteImg from "../../assets/img/Suite2.png";
+import VipImg from "../../assets/img/Suite2.png";
 import QuartoImg from "../../assets/img/Quarto2.png";
 import ApartamentoImg from "../../assets/img/Apartamento.png";
 import BoxReserva from "../../components/BoxReserva";
@@ -18,11 +18,11 @@ export default function Quarto(props) {
   const isApartamento = tipo.toLowerCase() === "apartamento";
 
   return (
-    <Section title={isApartamento ? "Apartamento" : "Quarto"}>
+    <Section title={isApartamento ? "Apartamento" : "Vip"}>
       <div className="Quarto">
         <div className="Quarto__head">
           <div className="Quarto__image">
-            {isApartamento ? <img src={SuiteImg} /> : <img src={QuartoImg} />}
+            {isApartamento ? <img src={VipImg} /> : <img src={QuartoImg} />}
           </div>
           <div className="Quarto__reserva">
             <Box>

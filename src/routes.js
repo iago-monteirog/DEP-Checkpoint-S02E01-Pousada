@@ -18,7 +18,7 @@ export default function Routes() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/quartos" exact component={Quartos} />
-          <Route path="/quarto/:tipo" exact component={Quarto} />
+          <Route path="/quartos/:tipo" exact component={Quarto} />
           <Route path="/reserva" exact component={FinalizarReserva} />
           <Route path="/admin/reservas" exact component={ReservasFeitas} />
           <Route path="/contato" exact component={Contato} />
