@@ -1,0 +1,54 @@
+.QuartosSection {
+  padding: $nudge-3 0;
+
+  .QuartosSection__inside {
+    h2 {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 41.04px;
+      line-height: 56px;
+      color: #445566;
+      text-align: center;
+      margin-bottom: $nudge-3;
+
+      @include for-desktop-up {
+          margin-bottom: $nudge-7;
+      }
+    }
+  }
+  .QuartosSection__boxes {
+    @include for-desktop-up {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $nudge-4;
+    }
+
+    .QuartosSection__box {
+      background: #ffffff;
+      box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.25);
+      border-radius: $nudge;
+      margin: 0 auto;
+      margin-bottom: $nudge-3;
+      max-width: 600px;
+
+      img {
+      }
+
+      article {
+        text-align: center;
+        padding: $nudge;
+        font-size: 36px;
+        line-height: 49px;
+        color: #445566;
+
+        p {
+        }
+      }
+    }
+  }
+  .QuartoSection__bottom {
+    display: flex;
+    justify-content: center;
+  }
+}

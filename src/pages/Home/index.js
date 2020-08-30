@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar";
 import HomeBanner from "../../components/HomeBanner";
 import BoxReserva from "../../components/BoxReserva";
 import About from "../../components/About";
+import QuartosSection from "../../components/QuartosSection";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
       <Navbar />
       <HomeBanner />
       <BoxReserva />
-      <About/>
+      <About />
+      <QuartosSection />
     </>
   );
 }
