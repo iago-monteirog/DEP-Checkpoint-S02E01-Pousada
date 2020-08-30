@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FinalizarReserva from "./pages/FinalizarReserva";
 import ReservaFinalizada from "./pages/ReservaFinalizada";
+import ReservasFeitas from "./pages/ReservasFeitas";
 
 export default function Routes() {
   return (
@@ -18,6 +19,7 @@ export default function Routes() {
           <Route path="/quartos" exact component={Quartos} />
           <Route path="/quarto/:tipo" exact component={Quarto} />
           <Route path="/reserva" exact component={FinalizarReserva} />
+          <Route path="/admin/reservas" exact component={ReservasFeitas} />
           <Route
             path="/reserva-finalizada"
             exact

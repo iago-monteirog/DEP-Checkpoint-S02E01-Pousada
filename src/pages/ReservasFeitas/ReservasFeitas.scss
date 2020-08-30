@@ -1,0 +1,24 @@
+.ReservasFeitas {
+  .Box {
+    margin-bottom: $nudge-3;
+  }
+
+  .ReservasFeitasBox {
+    display: flex;
+    justify-content: space-between;
+
+    .ReservasFeitasBox-tipo {
+    }
+    .ReservasFeitasBox-valor {
+    }
+    .ReservasFeitasBox-checkin {
+    }
+    .ReservasFeitasBox-checkout {
+    }
+    .ReservasFeitasBox-excluir {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
