@@ -5,6 +5,7 @@ import HomeBanner from "../../components/HomeBanner";
 import BoxReserva from "../../components/BoxReserva";
 import About from "../../components/About";
 import QuartosSection from "../../components/QuartosSection";
+import Hero from "../../components/Hero";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <BoxReserva />
       <About />
       <QuartosSection />
+      <Hero />
     </>
   );
 }
