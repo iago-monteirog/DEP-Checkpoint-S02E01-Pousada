@@ -1,0 +1,44 @@
+.Content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 41.04px;
+    line-height: 56px;
+    color: #445566;
+    margin-bottom: $nudge-3;
+  }
+
+  p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 163.68%;
+    color: #445566;
+    margin-bottom: $nudge-2;
+  }
+
+  .Content__columns {
+    display: flex;
+    flex-direction: column;
+
+    article {
+      margin-bottom: $nudge-3;
+    }
+
+    @include for-desktop-up {
+      flex-direction: row;
+      justify-content: space-between;
+
+      article {
+        width: 45%;
+      }
+    }
+  }
+}

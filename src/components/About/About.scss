@@ -1,0 +1,20 @@
+.About {
+  padding: $nudge-6 0;
+
+  @include for-desktop-up {
+    padding: $nudge-10 0;
+  }
+
+  .About__inside {
+    max-width: 1056px;
+    margin: 0 auto;
+
+    h2 {
+      text-align: center;
+
+      @include for-desktop-up {
+        margin-bottom: $nudge-8;
+      }
+    }
+  }
+}
