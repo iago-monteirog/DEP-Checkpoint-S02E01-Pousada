@@ -1,0 +1,31 @@
+.WhereWeAre {
+  padding: $nudge-4 0;
+
+  @include for-desktop-up {
+    padding: $nudge-8 0;
+  }
+
+  .WhereWeAre__inside {
+    h2 {
+      text-align: center;
+      margin-bottom: $nudge-3;
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 41.04px;
+      line-height: 56px;
+      color: #445566;
+
+      @include for-desktop-up {
+        margin-bottom: $nudge-8;
+      }
+    }
+
+    .WhereWeAre__map {
+      iframe {
+        height: 400px;
+        width: 100%;
+      }
+    }
+  }
+}
