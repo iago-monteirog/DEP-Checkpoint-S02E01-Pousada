@@ -124,7 +124,7 @@ export default function BoxReserva() {
           <Input
             name="checkout"
             onChange={onCheckoutChange}
-            label="Check-in"
+            label="Check-out"
             placeholder="Digite uma data"
             feedback={checkoutFeedback}
           />
