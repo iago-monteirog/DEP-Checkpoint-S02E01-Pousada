@@ -24,8 +24,8 @@ export default function FinalizarReserva(props) {
   useEffect(() => {
     setTotal(
       (utils.daysInterval(
-        checkout.replace(/-/g, "/"),
-        checkin.replace(/-/g, "/")
+        checkin.replace(/-/g, "/"),
+        checkout.replace(/-/g, "/")
       ) +
         1) *
         unitCost
@@ -59,8 +59,8 @@ export default function FinalizarReserva(props) {
     const data = {
       nome,
       tipo: tipoId,
-      data_chegada: checkout.replace(/-/g, "/"),
-      data_saida: checkin.replace(/-/g, "/"),
+      data_chegada: checkin.replace(/-/g, "/"),
+      data_saida: checkout.replace(/-/g, "/"),
       valor: utils.formatMoney(total, 2, ",", ".", "R$"),
     };
 
