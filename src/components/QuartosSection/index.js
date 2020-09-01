@@ -24,7 +24,7 @@ export default function QuartosSection() {
               onClick={() => {
                 console.log("clicked");
               }}
-              text="detalhes"
+              text="Detalhes"
               theme="blue"
             />
           </div>

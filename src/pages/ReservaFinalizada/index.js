@@ -12,7 +12,7 @@ export default function ReservaFinalizada(props) {
   return (
     <div className="ReservaFinalizada">
       <Section
-        title={`Parabéns, ${nome}
+        title={`Parabéns ${nome},
             sua reserva foi 
             feita com sucesso!`}
       >

@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="container">
         <div className="Hero__inside">
           <article>
-            <p>“Aproveite seu tempo de descanso com quem você ama”</p>
+            <p>“Aproveite seu tempo de descanso com quem você ama.”</p>
           </article>
         </div>
       </div>

@@ -174,18 +174,10 @@ export default function Quarto(props) {
               <article>
                 <h2>Descrição</h2>
                 <p>
-                  Como cidade capital, abriga na zona chamada Plateau,
-                  promontório à beira-mar, edifícios públicos e outras
-                  construções de importância, como o Palácio Presidencial,
-                  construído no fim do século XIX para ser a residência do
-                  governador português.
+                Venha saborear um delicioso café da manhã, preparado especialmente para você
                 </p>
                 <p>
-                  Como cidade capital, abriga na zona chamada Plateau,
-                  promontório à beira-mar, edifícios públicos e outras
-                  construções de importância, como o Palácio Presidencial,
-                  construído no fim do século XIX para ser a residência do
-                  governador português.
+                Temos um espaço aconchegante sempre com as melhores opções e receitas para você aproveitar ao máximo seu café da manhã: pães diversos, sucos naturais, frios, bolos, ovos mexidos, iorgurte natural, mel e granola são algumas opções para começar bem o seu dia!
                 </p>
               </article>
             </div>

@@ -17,13 +17,9 @@ export default function Quartos() {
               </div>
               <div className="Quarto__column-body">
                 <article className="Content">
-                  <p>MINI DESCRIÇÃO</p>
+                  <p>Cative VIP</p>
                   <p>
-                    Como cidade capital, abriga na zona chamada Plateau,
-                    promontório à beira-mar, edifícios públicos e outras
-                    construções de importância, como o Palácio Presidencial,
-                    construído no fim do século XIX para ser a residência do
-                    governador português.
+                  Toda comodidade e praticidade você encontra nas suítes Superior. Ideal para até 4 pessoas
                   </p>
                 </article>
               </div>
@@ -41,13 +37,9 @@ export default function Quartos() {
               </div>
               <div className="Quarto__column-body">
                 <article className="Content">
-                  <p>MINI DESCRIÇÃO</p>
+                  <p>Cative Apartamento</p>
                   <p>
-                    Como cidade capital, abriga na zona chamada Plateau,
-                    promontório à beira-mar, edifícios públicos e outras
-                    construções de importância, como o Palácio Presidencial,
-                    construído no fim do século XIX para ser a residência do
-                    governador português.
+                  Com vista para área verde, toda comodidade e praticidade você encontra na suíte Deluxe. Ideal para até 3 pessoas.
                   </p>
                 </article>
               </div>

@@ -16,7 +16,7 @@ export default function Navbar(props) {
         <div className="Navbar__inside">
           <div className="Navbar__logo">
             <Link to="/">
-              <h1>Logo</h1>
+              <h1>Cative</h1>
             </Link>
           </div>
           <div onClick={toggleMenu} className="Navbar__hamburguer-menu">
