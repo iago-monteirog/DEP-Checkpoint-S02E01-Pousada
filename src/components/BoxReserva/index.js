@@ -33,7 +33,7 @@ export default function BoxReserva() {
     }
 
     if (utils.dateIsBeforeToday(value)) {
-      setCheckinFeedback("Data não pode serantes de hoje");
+      setCheckinFeedback("Data não pode ser antes de hoje");
     }
   }
 
@@ -49,7 +49,7 @@ export default function BoxReserva() {
     }
 
     if (utils.dateIsBeforeToday(value)) {
-      setCheckoutFeedback("Data não pode serantes de hoje");
+      setCheckoutFeedback("Data não pode ser antes de hoje");
       return;
     }
 
