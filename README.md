@@ -30,4 +30,4 @@ Este comando vai instalar todas as dependências listadas no package.json.
 npm start
 ```
 
-Vai iniciar um servidor local e iniciar a aplicação em seu navegador padrão.
+Já irá iniciar a aplicação em sua página inicial, em seu navegador padrão.
