@@ -31,7 +31,7 @@ const utils = {
     return (
       moment(
         `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
-      ).diff(moment(), "days") + 1
+      ).diff(moment(), "days")
     );
   },
   daysInterval(checkinDate, checkoutDate) {
