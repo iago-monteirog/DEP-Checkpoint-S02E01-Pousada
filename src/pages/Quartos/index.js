@@ -28,7 +28,7 @@ export default function Quartos() {
                 </article>
               </div>
               <div className="QuartoColumn__bottom">
-                <Button text="Consultar" theme="blue" />
+                <Button text="Consultar" theme="blue" linkTo="/quartos/vip" />
               </div>
             </div>
             <div className="Quarto__column">
@@ -52,7 +52,11 @@ export default function Quartos() {
                 </article>
               </div>
               <div className="QuartoColumn__bottom">
-                <Button text="Consultar" theme="blue" />
+                <Button
+                  text="Consultar"
+                  theme="blue"
+                  linkTo="/quartos/apartamento"
+                />
               </div>
             </div>
           </div>

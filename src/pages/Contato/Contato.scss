@@ -31,3 +31,12 @@
     }
   }
 }
+
+.Feedback {
+  background: $success;
+  padding: $nudge;
+  border-radius: $nudge;
+  margin-top: $nudge-3;
+  color: $white;
+  font-weight: bold;
+}

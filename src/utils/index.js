@@ -46,6 +46,9 @@ const utils = {
   daysAfterNow(checkoutDate, days) {
     return utils.daysIntervalFromGivenDate(checkoutDate) < days;
   },
+  emailIsValid(email) {
+    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  },
   formatMoney(number, decimals, dec_point, thousands_sep, symbol = "") {
     if (number === undefined || !decimals || !dec_point || !thousands_sep)
       return;

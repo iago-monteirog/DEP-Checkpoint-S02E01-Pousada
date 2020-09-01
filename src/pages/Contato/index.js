@@ -3,31 +3,86 @@ import Section from "../../components/Section";
 import Input from "../../components/Form/Input";
 import TextArea from "../../components/Form/TextArea";
 import Button from "../../components/Button";
-import api from '../../services/api'
+import api from "../../services/api";
+import util from "../../utils";
+import utils from "../../utils";
 
 export default function Contato() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [mensagem, setMensagem] = useState('');
-
-  const [feedback, setFeedback] = useState('');
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensagem, setMensagem] = useState("");
+  const [nomeFeedback, setNomeFeedback] = useState("");
+  const [emailFeedback, setEmailFeedback] = useState("");
+  const [mensagemFeedback, setMensagemFeedback] = useState("");
+  const [feedback, setFeedback] = useState("");
 
   function sendContato(e) {
     e.preventDefault();
-    if(!nome || !email || !mensagem) {
-      return setFeedback("Campos precisam estar preenchidos")
+    if (!nome || !email || !mensagem) {
+      alert("Preencha todos os campos");
+      return;
     }
-    api.post('/feedback', {
-      nome,
-      email,
-      mensagem
-    }).then(resp => setFeedback(resp.data))
-    .catch(err => console.log(err))
+
+    if (nomeFeedback || emailFeedback || mensagemFeedback) {
+      alert("Preencha todos os campos corretamente");
+      return;
+    }
+
+    api
+      .post("/feedback", {
+        nome,
+        email,
+        mensagem,
+      })
+      .then((resp) => {
+        setFeedback(resp.data);
+        setNome("");
+        setEmail("");
+        setMensagem("");
+      })
+      .catch((err) => console.log(err));
   }
 
-  useEffect(() => {
+  function onNomeChange(e) {
+    let value = e.target.value;
 
-  }, [feedback])
+    setNome(value);
+
+    if (!value) {
+      setNomeFeedback("Informe seu nome");
+    } else {
+      setNomeFeedback("");
+    }
+  }
+
+  function onEmailChange(e) {
+    let value = e.target.value;
+
+    setEmail(value);
+
+    if (!value) {
+      setEmailFeedback("Informe seu e-mail");
+    }
+
+    if (!utils.emailIsValid(value)) {
+      setEmailFeedback("Email inválido");
+      return;
+    }
+
+    setEmailFeedback("");
+  }
+
+  function onMensagemChange(e) {
+    let value = e.target.value;
+
+    setMensagem(value);
+
+    if (!value) {
+      setMensagemFeedback("Você não quer dizer nada?");
+    } else {
+      setMensagemFeedback("");
+    }
+  }
 
   return (
     <Section title="Contato">
@@ -37,32 +92,32 @@ export default function Contato() {
             <Input
               label="Nome"
               placeholder="Carlos Android"
-              feedback="Insira seu nome"
-              onChange={e => setNome(e.target.value)}
+              feedback={nomeFeedback}
+              onChange={onNomeChange}
               value={nome}
             />
             <Input
               label="E-mail"
               placeholder="carlos@android.com"
-              feedback="Insira seu email"
-              onChange={e => setEmail(e.target.value)}
+              feedback={emailFeedback}
               value={email}
+              onChange={onEmailChange}
             />
             <TextArea
               label="Mensagem"
               placeholder="Nota 10 na nac pra vcs"
-              feedback="Não quer dizer nada?"
-              onChange={e => setMensagem(e.target.value)}
+              feedback={mensagemFeedback}
+              onChange={onMensagemChange}
               value={mensagem}
             />
             <Button
               text="Enviar mensagem"
               theme="orange"
-              onClick={e => {
+              onClick={(e) => {
                 sendContato(e);
               }}
             />
-            <p className="Feedback">{feedback}</p>
+            {feedback && <p className="Feedback">{feedback}</p>}
           </form>
           <div className="Contato__map">
             <p>Endereço</p>
