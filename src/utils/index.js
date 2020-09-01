@@ -28,11 +28,9 @@ const utils = {
   daysIntervalFromGivenDate(checkoutDate) {
     checkoutDate = utils.splitDateStr(checkoutDate);
 
-    return (
-      moment(
-        `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
-      ).diff(moment(), "days")
-    );
+    return moment(
+      `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
+    ).diff(moment(), "days");
   },
   daysInterval(checkinDate, checkoutDate) {
     checkoutDate = utils.splitDateStr(checkoutDate);
@@ -46,7 +44,7 @@ const utils = {
     );
   },
   intervalIsInvalid(checkinDate, checkoutDate) {
-    return utils.daysInterval(checkoutDate, checkinDate) < 0;
+    return utils.daysInterval(checkoutDate, checkinDate) < 2;
   },
   daysAfterNow(checkoutDate, days) {
     return utils.daysIntervalFromGivenDate(checkoutDate) < days;
