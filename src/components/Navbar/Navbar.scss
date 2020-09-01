@@ -1,12 +1,12 @@
 .Navbar {
   background: $orange;
+  position: relative;
 
   .Navbar__inside {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
-    position: relative;
 
     @include for-desktop-up {
       padding: 21px 0;
@@ -39,7 +39,7 @@
       left: 0;
       right: 0;
       width: 100vw;
-      left: -$nudge-2;
+      z-index: 1;
       background: $orange;
       max-height: 0;
       overflow: hidden;
@@ -72,6 +72,9 @@
       }
 
       .MenuLinks__container {
+        max-width: 560px;
+        margin: 0 auto;
+
         @include for-desktop-up {
           display: flex;
           font-weight: bold;
