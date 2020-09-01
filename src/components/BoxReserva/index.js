@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import {DateRangePicker} from 'react-dates'
 import Input from "../Form/Input";
 import Select from "../Form/Select";
 import Button from "../Button";
@@ -11,6 +14,15 @@ export default function BoxReserva() {
   const [checkinFeedback, setCheckinFeedback] = useState("");
   const [checkout, setCheckout] = useState("");
   const [checkoutFeedback, setCheckoutFeedback] = useState("");
+
+  const [dateRange, setDateRange] = useState({
+    startDate: null,
+    endDate: null
+  });
+
+  const [focus, setFocus] = useState("startDate");
+  const { startDate, endDate } = dateRange;
+
   const history = useHistory();
 
   function onTipoChange(event) {
@@ -67,36 +79,25 @@ export default function BoxReserva() {
   }
 
   function onButtonClick() {
-    if (!checkin) {
+    if (!startDate) {
       setCheckinFeedback("Informe uma data");
       return;
     }
-
-    if (!checkout) {
+    
+    if (!endDate) {
       setCheckoutFeedback("Informe uma data");
       return;
     }
 
-    if (!utils.dateIsValid(checkin)) {
-      setCheckinFeedback("Data inválida");
-      return;
-    }
+    const startDateData = startDate._d;
+    const endDateData = endDate._d;
 
-    if (!utils.dateIsValid(checkout)) {
-      setCheckoutFeedback("Data inválida");
-      return;
-    }
-
-    if (utils.intervalIsInvalid(checkout, checkin)) {
-      alert("Intervalo de datas invalido");
-      return;
-    }
-
+    const formattedStartDate = `${startDateData.getDate()}-${startDateData.getMonth() + 1}-${startDateData.getFullYear()}`
+    const formattedEndDate = `${endDateData.getDate()}-${endDateData.getMonth() + 1}-${endDateData.getFullYear()}`
+    
+    console.log(formattedStartDate)
     history.push(
-      `/quartos/${tipo.toLowerCase()}/${checkout.replace(
-        /\//g,
-        "-"
-      )}/${checkin.replace(/\//g, "-")}`
+      `/reserva/${formattedStartDate}/${formattedEndDate}/${tipo}`
     );
   }
 
@@ -114,7 +115,17 @@ export default function BoxReserva() {
               { text: "Apartamento", value: "Apartamento" },
             ]}
           />
-          <Input
+          <DateRangePicker
+              startDate={startDate} // momentPropTypes.momentObj or null,
+              startDateId="startDateId" // PropTypes.string.isRequired,
+              endDate={endDate} // momentPropTypes.momentObj or null,
+              endDateId="endDateId" // PropTypes.string.isRequired,
+              displayFormat="DD/MM/YYYY"
+              onDatesChange={({startDate, endDate}) => {setDateRange({startDate: startDate, endDate: endDate})}}
+              focusedInput={focus} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+              onFocusChange={(focus) => setFocus(focus)} // PropTypes.func.isRequired,
+            />
+          {/* <Input
             name="checkin"
             onChange={onCheckinChange}
             label="Check-in"
@@ -127,7 +138,7 @@ export default function BoxReserva() {
             label="Check-in"
             placeholder="Digite uma data"
             feedback={checkoutFeedback}
-          />
+          /> */}
           <Button
             text="Reservar"
             onClick={onButtonClick}
