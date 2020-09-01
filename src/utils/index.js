@@ -1,5 +1,5 @@
 import moment from "moment";
-
+moment.locale("pt-br");
 const utils = {
   dateIsValid(date) {
     return /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(
@@ -7,12 +7,11 @@ const utils = {
     );
   },
   splitDateStr(date) {
-    date = date.split("/");
-
+    date = date.split("-");
     return {
-      day: parseInt(date[0]),
-      month: parseInt(date[1]),
-      year: parseInt(date[2]),
+      year: date[0],
+      month: date[1],
+      day: date[2],
     };
   },
   dateIsBeforeToday(date) {
@@ -22,12 +21,18 @@ const utils = {
       .add(1, "days")
       .isBefore(moment());
   },
+  formatToBRDate(date) {
+    date = date.split("-");
+    return `${date[2]}/${date[1]}/${date[0]}`;
+  },
   daysIntervalFromGivenDate(checkoutDate) {
     checkoutDate = utils.splitDateStr(checkoutDate);
 
-    return moment(
-      `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
-    ).diff(moment(), "days");
+    return (
+      moment(
+        `${checkoutDate.month}/${checkoutDate.day}/${checkoutDate.year}`
+      ).diff(moment(), "days") + 1
+    );
   },
   daysInterval(checkinDate, checkoutDate) {
     checkoutDate = utils.splitDateStr(checkoutDate);

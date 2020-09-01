@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
-import {DateRangePicker} from 'react-dates'
 import Section from "../../components/Section";
 import VipImg from "../../assets/img/Suite2.png";
 import ApartamentoImg from "../../assets/img/Apartamento.png";
@@ -22,31 +19,19 @@ export default function Quarto(props) {
   const isApartamento = tipo.toLowerCase() === "apartamento";
   const unitCost = isApartamento ? 100 : 200;
 
-  const [checkinDate, setCheckin] = useState(
-    checkin && checkin.replace(/-/g, "/")
-  );
-  const [checkoutDate, setCheckout] = useState(
-    checkout && checkout.replace(/-/g, "/")
-  );
+  const [checkinDate, setCheckin] = useState(checkin);
+  const [checkoutDate, setCheckout] = useState(checkout);
   const [checkinFeedback, setCheckinFeedback] = useState("");
   const [checkoutFeedback, setCheckoutFeedback] = useState("");
   const [total, setTotal] = useState(0);
 
-  const [dateRange, setDateRange] = useState({
-    startDate: null,
-    endDate: null
-  });
-
-  const [focus, setFocus] = useState("startDate");
-  const { startDate, endDate } = dateRange;
-
   useEffect(() => {
     try {
-      setTotal((utils.daysInterval(startDate, endDate) + 1) * unitCost);
+      setTotal((utils.daysInterval(checkinDate, checkoutDate) + 1) * unitCost);
     } catch (err) {
       setTotal(0);
     }
-  }, [startDate, endDate]);
+  }, [checkinDate, checkoutDate]);
 
   function onCheckinChange(event) {
     let value = event.target.value;
@@ -60,11 +45,6 @@ export default function Quarto(props) {
       setCheckinFeedback("");
     }
 
-    if (!utils.dateIsValid(value)) {
-      setCheckinFeedback("Data inválida");
-      return;
-    }
-
     if (utils.dateIsBeforeToday(value)) {
       setCheckinFeedback("Data não pode serantes de hoje");
     }
@@ -73,17 +53,13 @@ export default function Quarto(props) {
   function onCheckoutChange(event) {
     let value = event.target.value;
 
+    console.log("value", value);
     setCheckout(value);
     if (!value) {
       setCheckoutFeedback("Informe uma data");
       return;
     } else {
       setCheckoutFeedback("");
-    }
-
-    if (!utils.dateIsValid(value)) {
-      setCheckoutFeedback("Data inválida");
-      return;
     }
 
     if (utils.dateIsBeforeToday(value)) {
@@ -98,26 +74,22 @@ export default function Quarto(props) {
   }
 
   function onButtonClick() {
-    if (!startDate) {
+    if (!checkinDate) {
       setCheckinFeedback("Informe uma data");
       return;
     }
-    
-    if (!endDate) {
+
+    if (!checkoutDate) {
       setCheckoutFeedback("Informe uma data");
       return;
     }
 
-    const startDateData = startDate._d;
-    const endDateData = endDate._d;
+    if (utils.intervalIsInvalid(checkoutDate, checkinDate)) {
+      alert("Intervalo de datas invalido");
+      return;
+    }
 
-    const formattedStartDate = `${startDateData.getDate()}-${startDateData.getMonth()}-${startDateData.getFullYear()}`
-    const formattedEndDate = `${endDateData.getDate()}-${endDateData.getMonth()}-${endDateData.getFullYear()}`
-    
-    console.log(formattedStartDate)
-    history.push(
-      `/reserva/${formattedEndDate}/${formattedStartDate}/${tipo}`
-    );
+    history.push(`/reserva/${checkinDate}/${checkoutDate}/${tipo}`);
   }
 
   return (
@@ -134,16 +106,9 @@ export default function Quarto(props) {
           <div className="Quarto__reserva">
             <Box>
               <h3>Reserva</h3>
-              <DateRangePicker
-              startDate={startDate} // momentPropTypes.momentObj or null,
-              endDate={endDate} // momentPropTypes.momentObj or null,
-              dateFormat='dd/MM/yyyy'
-              onDatesChange={date => setDateRange(date)}
-              focusedInput={focus} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-              onFocusChange={(focus) => setFocus(focus)} // PropTypes.func.isRequired,
-              />
-              {/* <Input
+              <Input
                 name="checkin"
+                inputType="date"
                 onChange={onCheckinChange}
                 label="Check-in"
                 placeholder="Digite uma data"
@@ -151,13 +116,14 @@ export default function Quarto(props) {
                 value={checkinDate}
               />
               <Input
+                inputType="date"
                 name="checkout"
                 onChange={onCheckoutChange}
                 label="Check-out"
                 placeholder="Digite uma data"
                 value={checkoutDate}
                 feedback={checkoutFeedback}
-              /> */}
+              />
               <Input
                 name="checkout"
                 label="Total"
@@ -165,7 +131,11 @@ export default function Quarto(props) {
                 disabled
                 placeholder="R$"
               />
-              <Button onClick={() => onButtonClick()} text="Reservar" theme="orange" />
+              <Button
+                onClick={() => onButtonClick()}
+                text="Reservar"
+                theme="orange"
+              />
             </Box>
           </div>
         </div>

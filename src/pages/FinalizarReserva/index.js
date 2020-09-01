@@ -17,19 +17,13 @@ export default function FinalizarReserva(props) {
   const [nomeFeedback, setNomeFeedback] = useState("");
   const [total, setTotal] = useState(0);
   const history = useHistory();
+  const [buttonText, setButtonText] = useState("Finalizar reserva");
 
   const isApartamento = tipo.toLowerCase() === "apartamento";
   const unitCost = isApartamento ? 100 : 200;
 
   useEffect(() => {
-    setTotal(
-      (utils.daysInterval(
-        checkin.replace(/-/g, "/"),
-        checkout.replace(/-/g, "/")
-      ) +
-        1) *
-        unitCost
-    );
+    setTotal((utils.daysInterval(checkin, checkout) + 1) * unitCost);
   }, [checkout, checkin]);
 
   function onNomeChange(event) {
@@ -49,6 +43,8 @@ export default function FinalizarReserva(props) {
     e.preventDefault();
     e.stopPropagation();
 
+    setButtonText("Finalizando...");
+
     if (!nome) {
       setNomeFeedback("Informe seu nome");
       return;
@@ -59,8 +55,8 @@ export default function FinalizarReserva(props) {
     const data = {
       nome,
       tipo: tipoId,
-      data_chegada: checkin.replace(/-/g, "/"),
-      data_saida: checkout.replace(/-/g, "/"),
+      data_chegada: utils.formatToBRDate(checkin),
+      data_saida: utils.formatToBRDate(checkout),
       valor: utils.formatMoney(total, 2, ",", ".", "R$"),
     };
 
@@ -71,6 +67,7 @@ export default function FinalizarReserva(props) {
           history.push(`/reserva-finalizada/${nome}`);
         } else {
           alert(data);
+          setButtonText("Finalizar reserva");
         }
       })
       .catch(console.log);
@@ -95,7 +92,7 @@ export default function FinalizarReserva(props) {
               <Button
                 onClick={onButtonClick}
                 theme="green"
-                text="Finalizar Reseva"
+                text={buttonText}
                 isFullWidth
               />
             </form>

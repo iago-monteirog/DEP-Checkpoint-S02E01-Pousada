@@ -19,14 +19,7 @@ export default function QuartosSection() {
             />
           </div>
           <div className="QuartoSection__bottom">
-            <Button
-              linkTo="quartos"
-              onClick={() => {
-                console.log("clicked");
-              }}
-              text="Detalhes"
-              theme="blue"
-            />
+            <Button linkTo="quartos" text="detalhes" theme="blue" />
           </div>
         </div>
       </div>

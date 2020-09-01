@@ -6,13 +6,12 @@ const Input = ({
   placeholder,
   label,
   feedback,
-  type,
+  inputType,
   name,
   value,
   disabled,
 }) => {
-  if (disabled) {
-    console.log("disabled", value);
+  if (disabled) { 
     return (
       <div className="Input">
         <label htmlFor={name}>{label}</label>
@@ -21,7 +20,7 @@ const Input = ({
           name={name}
           id={name}
           placeholder={placeholder}
-          type={type}
+          type={inputType}
           onChange={onChange}
           value={value}
         />
@@ -37,7 +36,7 @@ const Input = ({
         name={name}
         id={name}
         placeholder={placeholder}
-        type={type}
+        type={inputType}
         onChange={onChange}
         value={value}
       />
